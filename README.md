@@ -22,3 +22,5 @@ Control Pilot Signal Components
 - 56k ohm resistor
 - 200k ohm resistor
 - +12 & -12v power supply module
+
+https://github.com/jamiejones85/BigPieEVSE/blob/main/Circuit.jpg

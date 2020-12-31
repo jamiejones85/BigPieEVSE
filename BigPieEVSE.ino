@@ -4,6 +4,8 @@
 #define SIGNAL_PIN A2
 #define SERIAL_BAUD 115200
 
+#define LIVE_ENABLE_PIN 8
+
 #define STATE_A 0 //ready state                       +12 V CP-PE
 #define STATE_B 1 //connected but not charging        +9±1 V CP-PE
 #define STATE_C 2 //charging                          +6±1 V
@@ -32,6 +34,8 @@ void setup() {
   state = 0;
   pinMode(SIGNAL_PIN, INPUT);
   pinMode(PILOT_PIN, OUTPUT);
+  pinMode(LIVE_ENABLE_PIN, OUTPUT);
+
   Timer1.initialize(1000);  // Frequency, 1000us = 1khz
   stateA();
 }
@@ -85,24 +89,30 @@ void stateA() {
   //Standby CP should be +12V
   Serial.println("Changing to State A");
   Timer1.pwm(PILOT_PIN, OUTPUT_12V);
+  digitalWrite(LIVE_ENABLE_PIN, LOW);
 }
 
 void stateB() {
   //CP should be square wave with duty cycle
   Serial.println("Changing to State B");
   Timer1.pwm(PILOT_PIN, DUTY);
+  digitalWrite(LIVE_ENABLE_PIN, LOW);
 }
 
 void stateC() {
   //CP should be square wave with duty cycle
   Serial.println("Changing to State C");
   Timer1.pwm(PILOT_PIN, DUTY);
+  digitalWrite(LIVE_ENABLE_PIN, HIGH);
+
 }
 
 void stateD() {
   //CP should be square wave with duty cycle
   Serial.println("Changing to State D");
   Timer1.pwm(PILOT_PIN, DUTY);
+  digitalWrite(LIVE_ENABLE_PIN, HIGH);
+
 }
 
 void stateE() {
@@ -111,6 +121,8 @@ void stateE() {
 void stateF() {
   Serial.println("Changing to State F");
   Timer1.pwm(PILOT_PIN, OUTPUT_MINUS_12V);
+  digitalWrite(LIVE_ENABLE_PIN, LOW);
+
 }
 
 void loop() {
