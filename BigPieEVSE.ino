@@ -1,10 +1,10 @@
 #include <TimerOne.h>
 
 #define PILOT_PIN 10
-#define SIGNAL_PIN A2
+#define SIGNAL_PIN A0
 #define SERIAL_BAUD 115200
 
-#define LIVE_ENABLE_PIN 8
+#define LIVE_ENABLE_PIN 2
 
 #define STATE_A 0 //ready state                       +12 V CP-PE
 #define STATE_B 1 //connected but not charging        +9±1 V CP-PE
