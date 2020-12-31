@@ -4,9 +4,7 @@ Arduino code for a super simple EVSE, intended for development use only.
 - Very Very simple code
 - Very Very simple hardware
 - Use at own risk
-- Doesn't currently close any relays to enable AC, easy to add.
 - No GFI
-- No Proximity Pilot
 
 Based on https://www.instructables.com/Arduino-EV-J1772-Charging-Station/
 
